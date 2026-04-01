@@ -1,0 +1,8 @@
+{
+  "name": "airport-congestion-monitor",
+  "version": "1.0.0",
+  "description": "인천공항 입국장 실시간 혼잡도 안내 서비스",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

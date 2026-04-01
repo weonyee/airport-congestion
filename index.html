@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>인천공항 입국장 혼잡도</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <div class="board-header">
+    <div class="board-header-inner">
+      <div class="airport-badge">ICN</div>
+      <div class="board-title-wrap">
+        <div class="board-title">인천국제공항</div>
+        <div class="board-subtitle">Incheon International Airport</div>
+      </div>
+      <div class="board-meta">
+        <div class="board-time" id="clock">--:--:--</div>
+        <div class="board-range" id="time-range-label">±2시간 기준</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="board-body">
+
+    <!-- 터미널 탭 -->
+    <div class="terminal-tabs">
+      <button class="tab-btn active" data-terminal="">전체</button>
+      <button class="tab-btn" data-terminal="T1">제1터미널 T1</button>
+      <button class="tab-btn" data-terminal="T2">제2터미널 T2</button>
+      <button class="refresh-btn" id="refresh-btn" type="button">↺ 새로고침</button>
+    </div>
+
+    <!-- 로딩 / 에러 -->
+    <div class="loading" id="loading"><div class="spinner"></div><span>데이터 로딩 중...</span></div>
+    <div class="error-box" id="error" style="display:none">
+      <span id="error-msg">오류가 발생했습니다.</span>
+      <button id="retry-btn">다시 시도</button>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div id="main-content" style="display:none">
+
+      <!-- 범례 -->
+      <div class="legend-bar">
+        <span class="legend-item"><span class="legend-dot low"></span>원활</span>
+        <span class="legend-item"><span class="legend-dot medium"></span>보통</span>
+        <span class="legend-item"><span class="legend-dot high"></span>혼잡</span>
+        <span class="legend-sep">|</span>
+        <span class="legend-text">입국장 클릭 시 상세 항공편 확인</span>
+      </div>
+
+      <!-- 터미널별 입국장 보드 -->
+      <div id="terminal-boards"></div>
+
+      <!-- 선택된 입국장 상세 -->
+      <div class="detail-panel" id="detail-panel" style="display:none">
+        <div class="detail-header">
+          <span id="detail-title">입국장 상세</span>
+          <button class="detail-close" id="detail-close">✕</button>
+        </div>
+        <div class="detail-stats" id="detail-stats"></div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>항공편</th>
+                <th>출발지</th>
+                <th>도착 게이트</th>
+                <th>예정 도착</th>
+                <th>실제 도착</th>
+                <th>내국인</th>
+                <th>외국인</th>
+                <th>혼잡도</th>
+              </tr>
+            </thead>
+            <tbody id="detail-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="board-footer">
+    데이터 출처: 공공데이터포털 (한국공항공사) &nbsp;|&nbsp; 마지막 갱신: <span id="last-updated">-</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
