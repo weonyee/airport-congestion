@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "icn-airport": {
-      "url": "https://icn-mcp--aitutor3.run.tools",
-      "disabled": false,
-      "autoApprove": []
-    }
-  }
-}
